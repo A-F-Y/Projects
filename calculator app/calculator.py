@@ -107,7 +107,15 @@ def button_clicked(value):
             result = float(label["text"]) / 100
             label["text"] = remove_zero_decimal(result)
 
-    else: # digits or decimals
+    else: # for square root, digits, or decimals
+        if value == "√":
+            num = float(label["text"])
+            if num < 0:
+                label["text"] = "Error"
+            else:
+                result = num ** 0.5
+                label["text"] = remove_zero_decimal(result)
+                
         if value == ".":
             if value not in label["text"]:
                 label["text"] += value
@@ -130,4 +138,5 @@ window_y = int((screen_height/2) - (window_height/2))
 window.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
 
 window.mainloop()
+
 
