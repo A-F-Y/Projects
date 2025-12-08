@@ -31,13 +31,14 @@ frame = tkinter.Frame(window)
 label = tkinter.Label(frame, text ="0", font=("Arial",45),background=color_black, foreground=color_white, anchor="e", width= column_count)
 
 label.grid(row=0, column=0, columnspan=column_count, sticky="we")
-
+#rows and columns
 for row in range (row_count):
     for column in range(column_count):
         value = button_values[row][column]
         button = tkinter.Button(frame, text=value, font=("Arial", 30),
                                 width=column_count-1, height=1,
                                 command=lambda value=value: button_clicked(value))
+        #button layout 
         if value in top_symbols:
             button.config(foreground=color_black, background=color_light_gray)
         elif value in right_symbols:
@@ -58,7 +59,7 @@ def clear_all():
     A = "0"
     operator = None
     B = None
-
+#gets rid of decimals 
 def remove_zero_decimal(num):
     if num % 1 ==0:
         num = int(num)
@@ -66,7 +67,7 @@ def remove_zero_decimal(num):
 
 def button_clicked(value):
     global right_symbols, top_symbols, label, A, B, operator
-
+#add,subtract,multiply, and divide operators
     if value in right_symbols:
         if value == "=":
             if A is not None and operator is not None:
@@ -92,17 +93,17 @@ def button_clicked(value):
                 B = "0"
 
             operator = value
-
+#for the top symbols
     elif value in top_symbols:
-        if value == "AC":
+        if value == "AC": #clears calculator
             clear_all()
             label["text"] = "0"
 
-        elif value == "+/-":
+        elif value == "+/-": #positive or negative
             result = float(label["text"]) * -1
             label["text"] = remove_zero_decimal(result)
 
-        elif value == "%":
+        elif value == "%": #percentage
             result = float(label["text"]) / 100
             label["text"] = remove_zero_decimal(result)
 
@@ -129,3 +130,4 @@ window_y = int((screen_height/2) - (window_height/2))
 window.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
 
 window.mainloop()
+
