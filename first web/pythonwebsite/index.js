@@ -1,3 +1,4 @@
+// to delete notes 
 function deleteNote(noteId) {
     fetch("/delete-note", {
         method: "POST",
@@ -5,4 +6,5 @@ function deleteNote(noteId) {
     }).then((_res) => {
         window.location.href = "/";
     });
+
 }
