@@ -137,7 +137,7 @@ class WeatherApp(QWidget):
 
     def display_weather(self, data):
         self.temperature_label.setStyleSheet("font-size: 75px;")
-        #converting temperature from Kelvin to Fahrenheit
+        # converting temperature from Kelvin to Fahrenheit
         temperature_k = data["main"]["temp"]
         temperature_f = (temperature_k * 9/5) - 459.67
         # weather code conditions and the description
@@ -178,3 +178,4 @@ if __name__== "__main__":
     weather_app = WeatherApp()
     weather_app.show()
     sys.exit(app.exec_())
+
