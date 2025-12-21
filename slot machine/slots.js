@@ -1,11 +1,4 @@
-// Deposit money
-// Determine the number of lines to bet on
-// Collect a betting amount
-// Spin the slot machine
-// Check if the user has won
-// Give the user their winnings
-// Play the slot machine again
-
+// Slot Machine
 const prompt = require ("prompt-sync")();
 
 const ROWS = 3;
@@ -24,7 +17,7 @@ const SYMBOL_VALUES = {
   C: 3,
   D: 2
 }
-
+// Deposit money
 const deposit = () => {
    while(true) {   
     const depositAmount = prompt("Enter a deposit amount: ");
@@ -37,7 +30,7 @@ const deposit = () => {
     }
   }
 };
-
+// The number of lines to bet on
 const getNumberOfLines = () => {
   while(true) {   
     const lines = prompt("Enter the number of lines to bet on (1-3): ");
@@ -50,7 +43,7 @@ const getNumberOfLines = () => {
     }
   }
 };
-
+// Collect a betting amount
 const getBet = (balance, lines) => {
    while(true) {   
     const bet = prompt("Enter the total bet per line: ");
@@ -63,7 +56,7 @@ const getBet = (balance, lines) => {
     }
   }
 };
-
+// Spin the slot machine
 const spin = ()  => {
   const symbols = [];
   for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) { 
@@ -110,7 +103,7 @@ const printRows = (rows) => {
     console.log(rowString);
   }
 };
-
+// Check if the user has won & give the user their winnings
 const getWinnings = (rows, bet, lines) => {
   let winnings = 0;
   for (let row =0; row < lines; row++) {
@@ -149,9 +142,10 @@ while (true) {
       console.log("You ran out of money!");
       break;
     }
-    const playAgain = prompt("Do you want to play again (y/n)? ");
+    const playAgain = prompt("Do you want to play again (y/n)? "); // Play the slot machine again
     if (playAgain != "y") break;
   }
 };
+
 
 game();
